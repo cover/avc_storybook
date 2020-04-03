@@ -1,13 +1,13 @@
 /* rails-erb-loader-dependencies components/ ../test/components/previews/ */
 
-const stories =[];
+const stories = [];
 let story;
 
 <% ActionView::Component::Preview.all.each do |preview| %>
   story = { default: { title: "<%= preview.preview_name.titleize %>" } };
 
     <% preview.examples.each do |example| %>
-      story["<%= example %>"] = () => "<div><%= preview.preview_name.titleize %> - <%= example %></div>"
+      story["<%= example %>"] = () => '<iframe src="/rails/components/<%= preview.preview_name %>/<%= example %>" frameborder="0" style="width:100%;"></iframe>'
     <% end %>
 
   stories.push(story);
